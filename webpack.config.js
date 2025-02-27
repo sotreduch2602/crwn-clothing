@@ -10,7 +10,6 @@ module.exports = {
           {
             loader: "sass-loader",
             options: {
-              // Dart Sass is explicitly set here
               implementation: require("sass").default, // <-- Modern Dart Sass API
             },
           },
