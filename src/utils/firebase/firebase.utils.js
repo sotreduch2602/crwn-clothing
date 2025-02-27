@@ -20,18 +20,31 @@ const firebaseConfig = {
 
 // Initialize Firebase
 const firebaseapp = initializeApp(firebaseConfig);
-const provider = new GoogleAuthProvider();
-provider.setCustomParameters({ prompt: "select_account" });
+const GoogleProvider = new GoogleAuthProvider();
+GoogleProvider.setCustomParameters({ prompt: "select_account" });
 
-export const auth = getAuth(firebaseapp);
-export const signInWithGooglePopup = () => signInWithPopup(auth, provider);
+//authentification
+export const auth = getAuth();
+export const signInWithGooglePopup = () =>
+  signInWithPopup(auth, GoogleProvider);
 
+export const signInWithGoogleRedirect = async () => {
+  try {
+    return await signInWithRedirect(auth, GoogleProvider);
+  } catch (error) {
+    console.error("Redirect Sign In Error:", error);
+    throw error;
+  }
+};
+
+//firestore database
 export const db = getFirestore();
 export const createUserDocumentFromAuth = async (userAuth) => {
   const userDocRef = doc(db, "users", userAuth.uid);
   console.log(userDocRef);
 
   const userSnapshot = await getDoc(userDocRef);
+  //Test if user data exists
   console.log(userSnapshot);
   console.log(userSnapshot.exists());
   //if user datat does not exists
@@ -47,5 +60,4 @@ export const createUserDocumentFromAuth = async (userAuth) => {
   }
 
   return userDocRef;
-  //if user data exists
 };
