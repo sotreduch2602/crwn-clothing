@@ -5,7 +5,7 @@ import {
   signInWithPopup,
   GoogleAuthProvider,
   createUserWithEmailAndPassword,
-  signInWithEmailAndPassword
+  signInWithEmailAndPassword,
 } from "firebase/auth";
 
 import { getFirestore, doc, getDoc, setDoc } from "firebase/firestore";
@@ -20,8 +20,17 @@ const firebaseConfig = {
   appId: "1:308241741076:web:75404b950cced8e5b77e01",
 };
 
+// const firebaseConfig = {
+//   apiKey: "AIzaSyDDU4V-_QV3M8GyhC9SVieRTDM4dbiT0Yk",
+//   authDomain: "crwn-clothing-db-98d4d.firebaseapp.com",
+//   projectId: "crwn-clothing-db-98d4d",
+//   storageBucket: "crwn-clothing-db-98d4d.appspot.com",
+//   messagingSenderId: "626766232035",
+//   appId: "1:626766232035:web:506621582dab103a4d08d6",
+// };
+
 // Initialize Firebase
-const firebaseapp = initializeApp(firebaseConfig);
+const app = initializeApp(firebaseConfig);
 const GoogleProvider = new GoogleAuthProvider();
 GoogleProvider.setCustomParameters({ prompt: "select_account" });
 
