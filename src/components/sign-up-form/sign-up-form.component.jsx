@@ -19,8 +19,6 @@ const SignUpForm = () => {
   const [formFields, setformFields] = useState(defaultFormFields);
   const { displayName, email, password, confirmPassword } = formFields;
 
-  // console.log(formFields);
-
   const resetFormFields = () => {
     setformFields(defaultFormFields);
   };
@@ -97,9 +95,7 @@ const SignUpForm = () => {
             value={confirmPassword}
           ></FormInput>
 
-          <Button  type="submit">
-            Sign Up
-          </Button>
+          <Button type="submit">Sign Up</Button>
         </form>
       </div>
     </>
